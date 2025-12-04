@@ -26,7 +26,7 @@ export default function CertificadoCasamentoPage() {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Certificados</p>
         <h1 className="text-2xl font-semibold text-foreground">Certificado de Casamento</h1>
         <p className="text-sm text-muted-foreground">
-          Preencha os dados do casal e da cerimonia para gerar um certificado elegante. O template segue o padrao original.
+          Preencha os dados do casal e da cerimônia para gerar um certificado elegante. O template segue o padrão original.
         </p>
         <Button asChild variant="outline" className="w-full sm:w-auto">
           <Link href="/certificados">Voltar para os certificados</Link>
@@ -41,7 +41,7 @@ export default function CertificadoCasamentoPage() {
         <CardContent className="space-y-4">
           <div className="space-y-1">
             <p className="text-sm font-semibold text-foreground">Identidade visual do certificado</p>
-            <p className="text-xs text-muted-foreground">Informe a marca que ficara em destaque na parte superior.</p>
+            <p className="text-xs text-muted-foreground">Informe a marca que ficará em destaque na parte superior.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
@@ -65,7 +65,7 @@ export default function CertificadoCasamentoPage() {
             <div className="space-y-2">
               <Label htmlFor="logoUpload">Upload da logo</Label>
               <Input id="logoUpload" type="file" accept="image/*" onChange={handleLogoUpload} />
-              <p className="text-xs text-muted-foreground">PNG/JPG. Sem envio usamos a logo padrao (igreja.png).</p>
+              <p className="text-xs text-muted-foreground">PNG/JPG. Sem envio usamos a logo padrão (igreja.png).</p>
             </div>
           </div>
         </CardContent>
@@ -73,8 +73,8 @@ export default function CertificadoCasamentoPage() {
 
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
-          <CardTitle>Informacoes do certificado</CardTitle>
-          <CardDescription>Preencha os campos da cerimonia e acompanhe a previa.</CardDescription>
+          <CardTitle>Informações do certificado</CardTitle>
+          <CardDescription>Preencha os campos da cerimônia e acompanhe a prévia.</CardDescription>
         </CardHeader>
         <CardContent>
           <CasamentoCertificateBuilder igrejaNome={igrejaNome || "Igreja"} logoUrl={logoUrl || undefined} logoPath={logoPath} />

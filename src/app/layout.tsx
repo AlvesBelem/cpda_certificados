@@ -18,7 +18,7 @@ const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: "AdiGreja Certificados",
-  description: "Site publico focado na geracao de certificados prontos para igrejas.",
+  description: "Site público focado na geração de certificados prontos para igrejas.",
   metadataBase: new URL(appUrl),
 };
 

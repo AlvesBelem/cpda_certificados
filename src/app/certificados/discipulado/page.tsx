@@ -36,7 +36,7 @@ export default function CertificadoDiscipuladoPage() {
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
           <CardTitle>Identidade da igreja (opcional)</CardTitle>
-          <CardDescription>Use o nome e o logo da igreja para personalizar o cabecalho do certificado.</CardDescription>
+          <CardDescription>Use o nome e o logo da igreja para personalizar o cabeçalho do certificado.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-1">
@@ -65,7 +65,7 @@ export default function CertificadoDiscipuladoPage() {
             <div className="space-y-2">
               <Label htmlFor="logoUpload">Upload da logo</Label>
               <Input id="logoUpload" type="file" accept="image/*" onChange={handleLogoUpload} />
-              <p className="text-xs text-muted-foreground">PNG/JPG. Sem upload usamos a logo padrao (igreja.png).</p>
+              <p className="text-xs text-muted-foreground">PNG/JPG. Sem upload usamos a logo padrão (igreja.png).</p>
             </div>
           </div>
         </CardContent>
@@ -73,7 +73,7 @@ export default function CertificadoDiscipuladoPage() {
 
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
-          <CardTitle>Informacoes do certificado</CardTitle>
+          <CardTitle>Informações do certificado</CardTitle>
           <CardDescription>Preencha os campos do curso para gerar o certificado de discipulado.</CardDescription>
         </CardHeader>
         <CardContent>

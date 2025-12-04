@@ -26,7 +26,7 @@ export default function CertificadoEbdPage() {
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Certificados</p>
         <h1 className="text-2xl font-semibold text-foreground">Certificado EBD</h1>
         <p className="text-sm text-muted-foreground">
-          Registre trimestre, classe e assinaturas para gerar um certificado elegante da Escola Biblica Dominical.
+          Registre trimestre, classe e assinaturas para gerar um certificado elegante da Escola Bíblica Dominical.
         </p>
         <Button asChild variant="outline" className="w-full sm:w-auto">
           <Link href="/certificados">Voltar para os certificados</Link>
@@ -36,12 +36,12 @@ export default function CertificadoEbdPage() {
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
           <CardTitle>Identidade da igreja (opcional)</CardTitle>
-          <CardDescription>Adicione o nome e o logo para aparecerem no cabecalho do certificado.</CardDescription>
+          <CardDescription>Adicione o nome e o logo para aparecerem no cabeçalho do certificado.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-1">
             <p className="text-sm font-semibold text-foreground">Identidade visual do certificado</p>
-            <p className="text-xs text-muted-foreground">Escolha como a logo da igreja sera exibida.</p>
+            <p className="text-xs text-muted-foreground">Escolha como a logo da igreja será exibida.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
@@ -65,7 +65,7 @@ export default function CertificadoEbdPage() {
             <div className="space-y-2">
               <Label htmlFor="logoUpload">Upload da logo</Label>
               <Input id="logoUpload" type="file" accept="image/*" onChange={handleLogoUpload} />
-              <p className="text-xs text-muted-foreground">PNG/JPG sao aceitos. Sem upload usamos a logo padrao (igreja.png).</p>
+              <p className="text-xs text-muted-foreground">PNG/JPG são aceitos. Sem upload usamos a logo padrão (igreja.png).</p>
             </div>
           </div>
         </CardContent>
@@ -73,8 +73,8 @@ export default function CertificadoEbdPage() {
 
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
-          <CardTitle>Informacoes da Escola Biblica Dominical</CardTitle>
-          <CardDescription>Preencha os dados e veja a previa do certificado na hora.</CardDescription>
+          <CardTitle>Informações da Escola Bíblica Dominical</CardTitle>
+          <CardDescription>Preencha os dados e veja a prévia do certificado na hora.</CardDescription>
         </CardHeader>
         <CardContent>
           <EbdCertificateBuilder igrejaNome={igrejaNome || "Igreja"} logoUrl={logoUrl || undefined} logoPath={logoPath} />

@@ -49,7 +49,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataInicioFormatada, da
   const cepTexto = campos.cep || "00000-000";
   const periodoInicio = dataInicioFormatada || "____/____/______";
   const periodoFim = dataFimFormatada || "____/____/______";
-  const observacoesTexto = campos.observacoes || "Observacoes adicionais.";
+  const observacoesTexto = campos.observacoes || "Observações adicionais.";
 
   return (
     <div className="flex h-full flex-col rounded-[32px] border border-primary/20 bg-white p-6 text-[#412a14] md:p-10">
@@ -65,7 +65,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataInicioFormatada, da
           </div>
         </div>
         <aside className="rounded-2xl border border-primary/10 bg-primary/5 p-4 text-center text-sm text-primary md:w-72">
-          <p className="text-[10px] uppercase tracking-[0.4em] text-primary/70">Versiculo tema</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-primary/70">Versículo tema</p>
           <div className="mx-auto mt-2 h-px w-12 bg-primary/30" />
           <blockquote className="mt-3 text-sm leading-relaxed text-primary/80">{DEFAULT_VERSE}</blockquote>
         </aside>
@@ -77,9 +77,9 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataInicioFormatada, da
           <p className="text-lg font-semibold tracking-tight text-primary/90">{participante}</p>
         </div>
         <div className="space-y-1">
-          <p>Periodo</p>
+          <p>Período</p>
           <p className="text-lg font-semibold tracking-tight text-primary/90">
-            {periodoInicio} ate {periodoFim}
+            {periodoInicio} até {periodoFim}
           </p>
         </div>
       </div>
@@ -87,26 +87,26 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataInicioFormatada, da
       <div className="mt-6 space-y-3 text-sm leading-relaxed text-muted-foreground">
         <p>
           Atestamos que <span className="font-semibold text-foreground">{participante}</span> concluiu o curso de discipulado ministrado pela Igreja{" "}
-          <span className="font-semibold text-foreground">{igrejaTexto}</span>, demonstrando dedicacao e constancia em cada encontro.
+          <span className="font-semibold text-foreground">{igrejaTexto}</span>, demonstrando dedicação e constância em cada encontro.
         </p>
         <p>
           Local: bairro <span className="font-semibold text-foreground">{bairroTexto}</span>, cidade{" "}
           <span className="font-semibold text-foreground">{cidadeTexto}</span> - CEP{" "}
           <span className="font-semibold text-foreground">{cepTexto}</span>.
         </p>
-        <p>Observacoes: {observacoesTexto}</p>
+        <p>Observações: {observacoesTexto}</p>
       </div>
 
       <div className="mt-6 grid gap-6 border-t border-dashed border-primary/20 pt-6 text-xs uppercase tracking-[0.4em] text-muted-foreground md:grid-cols-3">
         <div className="space-y-2 text-center">
           <p className="font-mono text-base tracking-[0.3em] text-foreground/80">{SIGNATURE_LINE}</p>
-          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.pastor || "Pastor Responsavel"}</p>
+          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.pastor || "Pastor Responsável"}</p>
           <p>Pastor</p>
         </div>
         <div className="space-y-2 text-center">
           <p className="font-mono text-base tracking-[0.3em] text-foreground/80">{SIGNATURE_LINE}</p>
-          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.secretario || "Secretario(a)"}</p>
-          <p>Secretario(a)</p>
+          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.secretario || "Secretário(a)"}</p>
+          <p>Secretário(a)</p>
         </div>
         <div className="space-y-2 text-center">
           <p className="font-mono text-base tracking-[0.3em] text-foreground/80">{SIGNATURE_LINE}</p>
@@ -172,11 +172,11 @@ export function DiscipuladoCertificateBuilder({ igrejaNome, logoPath, logoUrl }:
 
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="dataInicio">Data de inicio</Label>
+              <Label htmlFor="dataInicio">Data de início</Label>
               <Input id="dataInicio" type="date" value={campos.dataInicio} onChange={handleChange("dataInicio")} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="dataFim">Data de conclusao</Label>
+              <Label htmlFor="dataFim">Data de conclusão</Label>
               <Input id="dataFim" type="date" value={campos.dataFim} onChange={handleChange("dataFim")} />
             </div>
           </div>
@@ -203,11 +203,11 @@ export function DiscipuladoCertificateBuilder({ igrejaNome, logoPath, logoUrl }:
 
           <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
-              <Label htmlFor="pastor">Pastor responsavel</Label>
+              <Label htmlFor="pastor">Pastor responsável</Label>
               <Input id="pastor" value={campos.pastor} onChange={handleChange("pastor")} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="secretario">Secretario(a)</Label>
+              <Label htmlFor="secretario">Secretário(a)</Label>
               <Input id="secretario" value={campos.secretario} onChange={handleChange("secretario")} />
             </div>
             <div className="space-y-2">
@@ -217,7 +217,7 @@ export function DiscipuladoCertificateBuilder({ igrejaNome, logoPath, logoUrl }:
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="observacoes">Observacoes</Label>
+            <Label htmlFor="observacoes">Observações</Label>
             <Textarea id="observacoes" value={campos.observacoes} onChange={handleChange("observacoes")} rows={3} />
           </div>
         </div>
@@ -230,7 +230,7 @@ export function DiscipuladoCertificateBuilder({ igrejaNome, logoPath, logoUrl }:
         />
       </div>
 
-      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_discipulado.png" mobileAlt="Previa do certificado de discipulado">
+      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_discipulado.png" mobileAlt="Prévia do certificado de discipulado">
         <CertificateInner
           logoSrc={logoSrc}
           igrejaNome={igrejaNome}

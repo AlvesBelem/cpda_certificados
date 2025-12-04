@@ -11,7 +11,7 @@ import { CertificatePreview } from "@/components/certificates/CertificatePreview
 
 const DEFAULT_LOGO = "/igreja.png";
 const DEFAULT_VERSE =
-  "\"Por isso, deixara o homem a seu pai e a sua mae, e unir-se-a a sua mulher; e serao ambos uma so carne.\" Genesis 2:24";
+  "\"Por isso, deixará o homem a seu pai e a sua mãe, e unir-se-á a sua mulher; e serão ambos uma só carne.\" Gênesis 2:24";
 const SIGNATURE_LINE = "________________________";
 
 type BuilderProps = {
@@ -60,7 +60,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
               <h2 className="text-4xl font-serif text-primary">Certificado de Casamento</h2>
               <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.5em] text-primary/60">
                 <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
-                <span>Uniao perante Deus</span>
+                <span>União perante Deus</span>
                 <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
               </div>
             </div>
@@ -68,7 +68,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
 
           <div className="mt-10 flex flex-col gap-8 text-left lg:flex-row lg:gap-12 ">
             <aside className="rounded-3xl bg-red-100/90 p-6 lg:w-64">
-              <p className="text-xs uppercase tracking-[0.4em] text-primary/60 ">Versiculo</p>
+              <p className="text-xs uppercase tracking-[0.4em] text-primary/60 ">Versículo</p>
               <div className="mt-3 h-px w-12 bg-primary/40" />
               <blockquote className="mt-4 text-base leading-relaxed text-primary/80">
                 {campos.versiculo || DEFAULT_VERSE}
@@ -79,10 +79,10 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
                 Certificamos que{" "}
                 <span className="font-semibold text-foreground">{campos.nomeNoivo || "__________________"}</span> e{" "}
                 <span className="font-semibold text-foreground">{campos.nomeNoiva || "__________________"}</span> uniram-se em
-                santo matrimonio diante de Deus e da Igreja, comprometidos a viver em amor e fidelidade conforme as Sagradas Escrituras.
+                santo matrimônio diante de Deus e da Igreja, comprometidos a viver em amor e fidelidade conforme as Sagradas Escrituras.
               </p>
               <p>
-                A cerimonia ocorreu na Igreja{" "}
+                A cerimônia ocorreu na Igreja{" "}
                 <span className="font-semibold text-foreground">{campos.igrejaCerimonia || "____________"}</span>, bairro{" "}
                 <span className="font-semibold text-foreground">{campos.bairro || "____________"}</span>, cidade de{" "}
                 <span className="font-semibold text-foreground">{campos.cidade || "____________"}</span> -{" "}
@@ -90,16 +90,16 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
                 <span className="font-semibold text-foreground">{dataFormatada}</span>.
               </p>
               <p>
-                Registrado na Igreja <span className="font-semibold text-foreground">{igrejaNome}</span> como testemunho de fe e amor.
+                Registrado na Igreja <span className="font-semibold text-foreground">{igrejaNome}</span> como testemunho de fé e amor.
               </p>
             </div>
           </div>
 
           <div className="-mt-10 grid gap-0 pt-10 text-right text-[11px] uppercase tracking-[0.4em] text-muted-foreground/80 md:grid-cols-2">
             <div className="space-y-1">
-              <p className="text-sm font-semibold tracking-normal text-foreground">{campos.secretario || "Nome do Secretario(a)"}</p>
+              <p className="text-sm font-semibold tracking-normal text-foreground">{campos.secretario || "Nome do Secretário(a)"}</p>
               <p className="font-mono text-base tracking-[0.3em] text-foreground/70">{SIGNATURE_LINE}</p>
-              <p>Secretario(a)</p>
+              <p>Secretário(a)</p>
             </div>
             <div className="space-y-1">
               <p className="text-sm font-semibold tracking-normal text-foreground">{campos.ministro || "Ministro(s) Oficiante(s)"}</p>
@@ -189,7 +189,7 @@ export function CasamentoCertificateBuilder({ igrejaNome, logoPath, logoUrl }: B
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="secretario">Secretario(a)</Label>
+              <Label htmlFor="secretario">Secretário(a)</Label>
               <Input id="secretario" value={campos.secretario} onChange={handleChange("secretario")} />
             </div>
             <div className="space-y-2">
@@ -231,7 +231,7 @@ export function CasamentoCertificateBuilder({ igrejaNome, logoPath, logoUrl }: B
       <CertificatePreview
         certificateRef={certificateRef}
         mobileImage="/certificado_casamento.png"
-        mobileAlt="Previa do certificado de casamento"
+        mobileAlt="Prévia do certificado de casamento"
         allowOverflow
         autoHeight
         contentClassName="pb-12 md:pb-16"

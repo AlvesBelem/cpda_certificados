@@ -34,7 +34,7 @@ export default function CertificadoBatismoPage() {
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
           <CardTitle>Identidade da igreja (opcional)</CardTitle>
-          <CardDescription>Informe o nome da igreja e uma URL de logo para que aparecam no certificado.</CardDescription>
+          <CardDescription>Informe o nome da igreja e uma URL de logo para que apareçam no certificado.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-1">
@@ -63,7 +63,7 @@ export default function CertificadoBatismoPage() {
             <div className="space-y-2">
               <Label htmlFor="logoUpload">Upload da logo</Label>
               <Input id="logoUpload" type="file" accept="image/*" onChange={handleLogoUpload} />
-              <p className="text-xs text-muted-foreground">Aceita PNG ou JPG. Se nao enviar, usamos a logo padrao (igreja.png).</p>
+              <p className="text-xs text-muted-foreground">Aceita PNG ou JPG. Se não enviar, usamos a logo padrão (igreja.png).</p>
             </div>
           </div>
         </CardContent>
@@ -71,7 +71,7 @@ export default function CertificadoBatismoPage() {
 
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
-          <CardTitle>Informacoes do certificado</CardTitle>
+          <CardTitle>Informações do certificado</CardTitle>
           <CardDescription>Preencha os campos abaixo para gerar o certificado de batismo.</CardDescription>
         </CardHeader>
         <CardContent>

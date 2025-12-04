@@ -10,35 +10,35 @@ import {
 } from "@/components/ui/card";
 
 const templates = [
-  { title: "Batismo", description: "Layout classico com destaque para nome, data, local e assinaturas.", href: "/certificados/batismo" },
-  { title: "EBD", description: "Modelo da Escola Biblica Dominical com trimestre, classe e professor.", href: "/certificados/ebd" },
-  { title: "Discipulado", description: "Certificado dourado para cursos, com periodo e assinatura pastoral.", href: "/certificados/discipulado" },
-  { title: "Apresentacao Infantil", description: "Versao para menina e para menino, com campos completos da familia.", href: "/certificados/apresentacao-menina" },
-  { title: "Casamento", description: "Arte floral para registrar uniao, local e celebrantes.", href: "/certificados/casamento" },
+  { title: "Batismo", description: "Layout clássico com destaque para nome, data, local e assinaturas.", href: "/certificados/batismo" },
+  { title: "EBD", description: "Modelo da Escola Bíblica Dominical com trimestre, classe e professor.", href: "/certificados/ebd" },
+  { title: "Discipulado", description: "Certificado dourado para cursos, com período e assinatura pastoral.", href: "/certificados/discipulado" },
+  { title: "Apresentação Infantil", description: "Versão para menina e para menino, com campos completos da família.", href: "/certificados/apresentacao-menina" },
+  { title: "Casamento", description: "Arte floral para registrar união, local e celebrantes.", href: "/certificados/casamento" },
 ];
 
 const steps = [
   {
-    title: "Escolha o modelo",
-    description: "Selecione o certificado que voce precisa. Todos os layouts estao prontos e padronizados.",
+    title: "Escolha o certificado",
+    description: "Selecione o modelo que precisa. Todos já vêm prontos para preencher.",
     icon: <Wand2 className="h-5 w-5 text-primary" />,
   },
   {
-    title: "Preencha os campos",
-    description: "Insira os dados da igreja e do evento. Veja a previa em tempo real, sem criar conta.",
+    title: "Insira as informações",
+    description: "Digite os dados da igreja e do evento e veja a prévia em tempo real.",
     icon: <Printer className="h-5 w-5 text-primary" />,
   },
   {
-    title: "Imprima ou gere PDF",
-    description: "Use o botao de impressao ou exporte o PDF para compartilhar com a congregacao.",
+    title: "Gere o PDF",
+    description: "Baixe o PDF finalizado e realize a impressão a partir dele quando quiser.",
     icon: <Download className="h-5 w-5 text-primary" />,
   },
 ];
 
 const highlights = [
-  { title: "Templates aprovados", description: "Arte revisada e pronta para uso. Nao alteramos o padrao dos certificados.", icon: <ShieldCheck className="h-5 w-5 text-primary" /> },
+  { title: "Templates aprovados", description: "Arte revisada e pronta para uso. Não alteramos o padrão dos certificados.", icon: <ShieldCheck className="h-5 w-5 text-primary" /> },
   { title: "Sem login ou pagamento", description: "Acesso livre aos modelos. Basta abrir, preencher e imprimir.", icon: <CheckCircle2 className="h-5 w-5 text-primary" /> },
-  { title: "Rapido e responsivo", description: "Funciona bem no celular e no desktop. Preenchimento fluido em poucos minutos.", icon: <Clock className="h-5 w-5 text-primary" /> },
+  { title: "Rápido e responsivo", description: "Funciona bem no celular e no desktop. Preenchimento fluido em poucos minutos.", icon: <Clock className="h-5 w-5 text-primary" /> },
 ];
 
 export default function LandingPage() {
@@ -64,10 +64,10 @@ function Hero() {
           Gerador de certificados
         </p>
         <h1 className="text-balance text-4xl font-bold tracking-tight text-foreground md:text-5xl">
-          Certificados prontos para batismo, casamento e ministerio em poucos cliques.
+          Certificados prontos para batismo, casamento e ministério em poucos cliques.
         </h1>
         <p className="text-balance text-lg text-muted-foreground">
-          Todos os modelos ja estao desenhados. Basta escolher, preencher e imprimir. Sem conta, sem integracao de pagamento.
+          Todos os modelos já estão desenhados. Basta escolher, preencher e imprimir. Sem conta, sem integração de pagamento.
         </p>
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild size="lg" className="h-12 px-8 text-base">
@@ -82,7 +82,7 @@ function Hero() {
         </div>
         <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
           <span className="flex items-center gap-2">
-            <Printer className="h-4 w-4 text-primary" /> Impressao direta ou PDF
+            <Printer className="h-4 w-4 text-primary" /> Impressão a partir do PDF gerado
           </span>
           <span className="flex items-center gap-2">
             <CheckCircle2 className="h-4 w-4 text-primary" /> Sem login
@@ -95,9 +95,9 @@ function Hero() {
 
       <Card className="border-primary/30 bg-primary/5">
         <CardHeader>
-          <CardTitle>O que voce encontra aqui</CardTitle>
+          <CardTitle>O que você encontra aqui</CardTitle>
           <CardDescription className="text-base">
-            Certificados aprovados por igrejas locais, com foco em clareza e em impressao.
+            Certificados aprovados por igrejas locais, com foco em clareza e em impressão.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 text-sm text-muted-foreground">
@@ -106,7 +106,7 @@ function Hero() {
             <span className="text-xl font-semibold text-foreground">6</span>
           </div>
           <div className="flex items-center justify-between rounded-xl border border-primary/15 bg-background/60 px-4 py-3">
-            <span>PDF em um clique</span>
+            <span>PDF em poucos cliques</span>
             <span className="text-xl font-semibold text-foreground">Sim</span>
           </div>
           <div className="flex items-center justify-between rounded-xl border border-primary/15 bg-background/60 px-4 py-3">
@@ -126,7 +126,7 @@ function TemplateGrid() {
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">Modelos prontos</p>
         <h2 className="text-3xl font-bold tracking-tight">Escolha o certificado e personalize os campos.</h2>
         <p className="text-muted-foreground">
-          Os layouts foram mantidos intactos para preservar o padrao. Basta informar os dados e imprimir.
+          Os layouts foram mantidos intactos para preservar o padrão. Basta informar os dados e imprimir.
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -157,9 +157,9 @@ function HowItWorks() {
     <section className="grid gap-6 rounded-3xl border border-border/80 bg-card px-6 py-10 md:grid-cols-[1fr,1.1fr]">
       <div className="space-y-4">
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">Como funciona</p>
-        <h2 className="text-3xl font-bold tracking-tight">Um fluxo simples para gerar certificados sem complicacao.</h2>
+        <h2 className="text-3xl font-bold tracking-tight">Um fluxo simples para gerar certificados sem complicação.</h2>
         <p className="text-muted-foreground">
-          Nao ha login, dashboard ou pagamentos. Apenas escolha o modelo, preencha e exporte.
+          Não há login, dashboard ou pagamentos. Apenas escolha o modelo, preencha e exporte.
         </p>
         <Button asChild className="mt-2 w-fit">
           <Link href="/certificados">
@@ -197,7 +197,7 @@ function Highlights() {
         <p className="text-sm font-semibold uppercase tracking-widest text-primary">Diferenciais</p>
         <h2 className="text-3xl font-bold tracking-tight">Pensado para igrejas que precisam de agilidade.</h2>
         <p className="text-muted-foreground">
-          Mantivemos apenas o essencial: os certificados e o que voce precisa para preenche-los rapidamente.
+          Mantivemos apenas o essencial: os certificados e o que você precisa para preenchê-los rapidamente.
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
@@ -228,9 +228,9 @@ function FinalCta() {
       <h2 className="mt-3 text-3xl font-bold tracking-tight">
         Acesse os certificados e gere o documento agora mesmo.
       </h2>
-      <p className="mt-2 text-muted-foreground">
-        Nenhum outro modulo, nenhum cadastro. Somente os modelos revisados e prontos para impressao.
-      </p>
+        <p className="mt-2 text-muted-foreground">
+          Nenhum outro módulo, nenhum cadastro. Somente os modelos revisados e prontos para impressão.
+        </p>
       <Button asChild size="lg" className="mt-6">
         <Link href="/certificados">
           Abrir os certificados
@@ -247,7 +247,7 @@ function Footer() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-6 px-6 py-10 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between">
         <div>
           <p className="font-semibold text-foreground">AdiGreja Certificados</p>
-          <p>Site publico focado apenas na emissao de certificados.</p>
+          <p>Site público focado apenas na emissão de certificados.</p>
         </div>
         <div className="flex flex-wrap gap-4">
           <Link href="/certificados" className="hover:text-foreground">
@@ -260,7 +260,7 @@ function Footer() {
             Casamento
           </Link>
         </div>
-        <p className="text-xs">{new Date().getFullYear()} Adigreja. Modelos mantidos conforme o padrao original.</p>
+        <p className="text-xs">{new Date().getFullYear()} Adigreja. Modelos mantidos conforme o padrão original.</p>
       </div>
     </footer>
   );

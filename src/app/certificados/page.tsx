@@ -11,7 +11,7 @@ const certificadosDisponiveis = [
   {
     slug: "ebd",
     titulo: "Certificado EBD",
-    descricao: "Modelo inspirado na Escola Biblica Dominical com trimestre, classe e assinaturas.",
+    descricao: "Modelo inspirado na Escola Bíblica Dominical com trimestre, classe e assinaturas.",
   },
   {
     slug: "discipulado",
@@ -20,18 +20,18 @@ const certificadosDisponiveis = [
   },
   {
     slug: "apresentacao-menina",
-    titulo: "Apresentacao de Criancas (Menina)",
-    descricao: "Certificado especial para apresentacao feminina, mantendo o layout original.",
+    titulo: "Apresentação de Crianças (Menina)",
+    descricao: "Certificado especial para apresentação feminina, mantendo o layout original.",
   },
   {
     slug: "apresentacao-menino",
-    titulo: "Apresentacao de Criancas (Menino)",
-    descricao: "Variante masculina do certificado de apresentacao infantil.",
+    titulo: "Apresentação de Crianças (Menino)",
+    descricao: "Variante masculina do certificado de apresentação infantil.",
   },
   {
     slug: "casamento",
     titulo: "Certificado de Casamento",
-    descricao: "Modelo floral inspirado no layout tradicional de casamento cristao.",
+    descricao: "Modelo floral inspirado no layout tradicional de casamento cristão.",
   },
 ];
 
@@ -42,30 +42,30 @@ export default function CertificadosPage() {
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary/70">Certificados</p>
         <h1 className="text-2xl font-semibold text-foreground">Selecione o modelo</h1>
         <p className="text-sm text-muted-foreground">
-          Escolha um certificado para preencher e imprimir. Os templates foram mantidos intactos para preservar o padrao visual.
+          Escolha um certificado para preencher e imprimir. Os templates foram mantidos intactos para preservar o padrão visual.
         </p>
       </header>
 
       <Card className="border-none bg-accent/40 shadow-sm">
         <CardHeader>
           <CardTitle>Como usar</CardTitle>
-          <CardDescription>Preencha, visualize em tempo real e gere o PDF.</CardDescription>
+          <CardDescription>Escolha, preencha, gere o PDF e imprima quando quiser.</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-3">
           <div className="space-y-1">
-            <p className="text-sm font-semibold text-foreground">1. Abra o modelo</p>
-            <p className="text-sm text-muted-foreground">Escolha o certificado e informe o nome da igreja e o logo (opcional).</p>
+            <p className="text-sm font-semibold text-foreground">1. Escolha o certificado</p>
+            <p className="text-sm text-muted-foreground">Selecione o modelo e informe o nome da igreja e o logo (opcional).</p>
           </div>
           <div className="space-y-1">
-            <p className="text-sm font-semibold text-foreground">2. Preencha os campos</p>
-            <p className="text-sm text-muted-foreground">Os dados aparecem na previa imediatamente, sem login ou cadastro.</p>
+            <p className="text-sm font-semibold text-foreground">2. Insira as informações</p>
+            <p className="text-sm text-muted-foreground">Os dados aparecem na prévia imediatamente, sem login ou cadastro.</p>
           </div>
           <div className="space-y-1">
-            <p className="text-sm font-semibold text-foreground">3. Imprima ou baixe</p>
+            <p className="text-sm font-semibold text-foreground">3. Gere o PDF</p>
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
               <Printer className="h-4 w-4 text-primary" />
               <Download className="h-4 w-4 text-primary" />
-              Use o botao de impressao ou exporte o PDF para compartilhar.
+              Baixe o PDF finalizado e faça a impressão a partir dele quando precisar.
             </p>
           </div>
         </CardContent>

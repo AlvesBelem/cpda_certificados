@@ -11,7 +11,7 @@ import { CertificatePreview } from "@/components/certificates/CertificatePreview
 
 const DEFAULT_LOGO = "/igreja.png";
 const DEFAULT_VERSE =
-  "\"Terminados os dias da purificacao, segundo a lei de Moises, levaram-no a Jerusalen, para apresenta-lo ao Senhor.\" Lucas 2:22";
+  "\"Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor.\" Lucas 2:22";
 const SIGNATURE_LINE = "________________________";
 
 type BuilderProps = {
@@ -64,10 +64,10 @@ function CertificateInner({
         <div className="certificate-header__info space-y-2">
           <p className="text-xs font-semibold uppercase tracking-[0.6em] text-primary/70">Igreja</p>
           <p className="text-sm uppercase tracking-[0.4em] text-primary/80">{igrejaNome}</p>
-          <h2 className="text-4xl font-serif text-primary">Certificado de Apresentacao</h2>
+          <h2 className="text-4xl font-serif text-primary">Certificado de Apresentação</h2>
           <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.5em] text-primary/60">
             <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
-            <span>Apresentacao Infantil</span>
+            <span>Apresentação Infantil</span>
             <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
           </div>
         </div>
@@ -75,7 +75,7 @@ function CertificateInner({
 
       <div className="mt-10 flex flex-col gap-8 text-left lg:flex-row lg:gap-12">
         <aside className="rounded-3xl bg-blue-100 p-6 lg:w-64">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary/60">Versiculo</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary/60">Versículo</p>
           <div className="mt-3 h-px w-12 bg-primary/40" />
           <blockquote className="mt-4 text-base leading-relaxed text-primary/80">
             {campos.versiculo || DEFAULT_VERSE}
@@ -99,8 +99,8 @@ function CertificateInner({
             <span className="font-semibold text-foreground">{campos.cep || "__________"}</span>.
           </p>
           <p>
-            A apresentacao ocorreu em {igrejaNome}, no dia{" "}
-            <span className="font-semibold text-foreground">{dataApresentacaoFormatada}</span>, diante da familia e da congregacao que
+            A apresentação ocorreu em {igrejaNome}, no dia{" "}
+            <span className="font-semibold text-foreground">{dataApresentacaoFormatada}</span>, diante da família e da congregação que
             se comprometem a ensinar os caminhos do Senhor.
           </p>
         </div>
@@ -108,9 +108,9 @@ function CertificateInner({
 
       <div className="-mt-10 grid gap-0 pt-10 text-right text-[11px] uppercase tracking-[0.4em] text-muted-foreground/80 md:grid-cols-2">
         <div className="space-y-1">
-          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.nomeSecretario || "Nome do Secretario(a)"} </p>
+          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.nomeSecretario || "Nome do Secretário(a)"} </p>
           <p className="font-mono text-base tracking-[0.3em] text-foreground/70">{SIGNATURE_LINE}</p>
-          <p>Secretario(a)</p>
+          <p>Secretário(a)</p>
         </div>
         <div className="space-y-1">
           <p className="text-sm font-semibold tracking-normal text-foreground">{campos.nomePastor || "Nome do Pastor"}</p>
@@ -147,8 +147,8 @@ export function ApresentacaoMeninoCertificateBuilder({ igrejaNome, logoPath, log
 
   const { certificateRef, isGenerating, isShareSupported, handleShare, handleGeneratePDF } = useCertificatePDF({
     fileName: `apresentacao-${campos.nomeCrianca || "crianca"}.pdf`,
-    title: "Apresentacao de Criancas",
-    text: `Certificado para ${campos.nomeCrianca || "crianca"}`,
+    title: "Apresentação de Crianças",
+    text: `Certificado para ${campos.nomeCrianca || "criança"}`,
   });
 
   const handleChange = (field: keyof Campos) => (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -174,7 +174,7 @@ export function ApresentacaoMeninoCertificateBuilder({ igrejaNome, logoPath, log
       <div className="space-y-6 rounded-3xl border border-border bg-background/70 p-6 shadow-sm print:hidden">
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="nomeCrianca">Nome da crianca</Label>
+            <Label htmlFor="nomeCrianca">Nome da criança</Label>
             <Input id="nomeCrianca" value={campos.nomeCrianca} onChange={handleChange("nomeCrianca")} placeholder="Ex.: Lucas Carvalho" />
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -203,7 +203,7 @@ export function ApresentacaoMeninoCertificateBuilder({ igrejaNome, logoPath, log
               <Input id="nomePai" value={campos.nomePai} onChange={handleChange("nomePai")} />
             </div>
             <div className="space-y-2">
-            <Label htmlFor="nomeMae">Nome da mae</Label>
+              <Label htmlFor="nomeMae">Nome da mãe</Label>
               <Input id="nomeMae" value={campos.nomeMae} onChange={handleChange("nomeMae")} />
             </div>
           </div>
@@ -226,12 +226,12 @@ export function ApresentacaoMeninoCertificateBuilder({ igrejaNome, logoPath, log
             <Input id="cep" value={campos.cep} onChange={handleChange("cep")} placeholder="00000-000" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="dataApresentacao">Data da apresentacao</Label>
+            <Label htmlFor="dataApresentacao">Data da apresentação</Label>
             <Input id="dataApresentacao" type="date" value={campos.dataApresentacao} onChange={handleChange("dataApresentacao")} />
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="nomeSecretario">Secretario(a)</Label>
+              <Label htmlFor="nomeSecretario">Secretário(a)</Label>
               <Input id="nomeSecretario" value={campos.nomeSecretario} onChange={handleChange("nomeSecretario")} />
             </div>
             <div className="space-y-2">
@@ -270,7 +270,7 @@ export function ApresentacaoMeninoCertificateBuilder({ igrejaNome, logoPath, log
         </div>
       </div>
 
-      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_menino.png" mobileAlt="Previa do certificado de apresentacao do menino">
+      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_menino.png" mobileAlt="Prévia do certificado de apresentação do menino">
         <CertificateInner
           logoSrc={logoSrc}
           igrejaNome={igrejaNome}

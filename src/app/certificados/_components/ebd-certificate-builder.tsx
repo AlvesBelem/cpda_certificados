@@ -10,7 +10,7 @@ import { CertificatePreview } from "@/components/certificates/CertificatePreview
 import { CertificateForm } from "./CertificateForm";
 
 const DEFAULT_LOGO = "/igreja.png";
-const DEFAULT_VERSE = "\"Habite ricamente em vos a palavra de Cristo.\" Colossenses 3:16";
+const DEFAULT_VERSE = "\"Habite ricamente em vós a palavra de Cristo.\" Colossenses 3:16";
 const SIGNATURE_LINE = "__________________";
 
 type BuilderProps = {
@@ -39,7 +39,16 @@ type CertificateInnerProps = {
 };
 
 function CertificateInner({ logoSrc, igrejaNome, campos, dataConclusaoFormatada }: CertificateInnerProps) {
-  const trimestreTexto = campos.trimestre || "___";
+  const formatarTrimestre = (valor: string, capitalize = true) => {
+    const base = valor || "4º";
+    const possuiTrimestre = /trimestre/i.test(base);
+    const possuiOrdinal = base.includes("º");
+    const prefixo = possuiTrimestre ? base : `${base}${possuiOrdinal ? "" : "º"}`;
+    return `${prefixo} ${capitalize ? "Trimestre" : "trimestre"}`;
+  };
+
+  const trimestreDisplay = formatarTrimestre(campos.trimestre, true);
+  const trimestreTexto = formatarTrimestre(campos.trimestre, false);
   const anoTexto = campos.ano || "____";
   const classeTexto = campos.classe || "_______________";
   const alunoTexto = campos.nomeAluno || "Nome do aluno(a)";
@@ -56,12 +65,12 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataConclusaoFormatada 
           </div>
           <div className="space-y-1 text-center md:text-left">
             <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-primary/70">Certificado</p>
-            <h2 className="text-3xl font-serif text-primary md:text-4xl">Escola Biblica Dominical</h2>
+            <h2 className="text-3xl font-serif text-primary md:text-4xl">Escola Bíblica Dominical</h2>
             <p className="text-xs uppercase tracking-[0.4em] text-primary/60">{igrejaNome}</p>
           </div>
         </div>
         <aside className="rounded-2xl border border-primary/15 bg-primary/5 p-4 text-center text-sm text-primary md:w-64">
-          <p className="text-[10px] uppercase tracking-[0.4em] text-primary/70">Versiculo tema</p>
+          <p className="text-[10px] uppercase tracking-[0.4em] text-primary/70">Versículo tema</p>
           <div className="mx-auto mt-2 h-px w-12 bg-primary/30" />
           <blockquote className="mt-3 text-sm leading-relaxed text-primary/80">
             {campos.versiculo || DEFAULT_VERSE}
@@ -72,7 +81,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataConclusaoFormatada 
       <div className="mt-2 grid gap-2 rounded-2xl border border-primary/10 bg-primary/5 p-1 text-center text-[11px] uppercase tracking-[0.3em] text-primary/70 md:grid-cols-3">
         <div className="space-y-1">
           <p>Trimestre</p>
-          <p className="text-lg font-semibold tracking-tight text-primary/90">{trimestreTexto}</p>
+          <p className="text-lg font-semibold tracking-tight text-primary/90">{trimestreDisplay}</p>
         </div>
         <div className="space-y-1">
           <p>Ano</p>
@@ -87,10 +96,10 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataConclusaoFormatada 
       <div className="mt-6 space-y-3 text-sm leading-relaxed text-muted-foreground">
         <p>
           Certificamos{" "}
-          <span className="font-semibold text-foreground">{alunoTexto}</span> pela participacao e assiduidade na classe{" "}
-          <span className="font-semibold text-foreground">{classeTexto}</span> durante o trimestre{" "}
+          <span className="font-semibold text-foreground">{alunoTexto}</span> pela participação e assiduidade na classe{" "}
+          <span className="font-semibold text-foreground">{classeTexto}</span> durante o{" "}
           <span className="font-semibold text-foreground">{trimestreTexto}</span> do ano{" "}
-          <span className="font-semibold text-foreground">{anoTexto}</span> na Escola Biblica Dominical desta congregacao.
+          <span className="font-semibold text-foreground">{anoTexto}</span> na Escola Bíblica Dominical desta congregação.
         </p>
         <p>
           Registramos este momento na cidade de {cidadeTexto}, na data de{" "}
@@ -173,7 +182,7 @@ export function EbdCertificateBuilder({ igrejaNome, logoPath, logoUrl }: Builder
       <div className="space-y-6 rounded-3xl border border-border bg-background/70 p-6 shadow-sm print:hidden">
         <div className="space-y-1">
           <h3 className="text-lg font-semibold text-foreground">Dados do certificado</h3>
-          <p className="text-sm text-muted-foreground">Preencha o formulario da Escola Biblica Dominical.</p>
+          <p className="text-sm text-muted-foreground">Preencha o formulário da Escola Bíblica Dominical.</p>
         </div>
 
         <div className="space-y-4">
@@ -185,14 +194,14 @@ export function EbdCertificateBuilder({ igrejaNome, logoPath, logoUrl }: Builder
           <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
               <Label htmlFor="trimestre">Trimestre</Label>
-              <Input id="trimestre" value={campos.trimestre} onChange={handleChange("trimestre")} placeholder="1" />
+              <Input id="trimestre" value={campos.trimestre} onChange={handleChange("trimestre")} placeholder="4º Trimestre" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="ano">Ano</Label>
               <Input id="ano" value={campos.ano} onChange={handleChange("ano")} placeholder="2024" />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="dataConclusao">Data da conclusao</Label>
+              <Label htmlFor="dataConclusao">Data da conclusão</Label>
               <Input id="dataConclusao" type="date" value={campos.dataConclusao} onChange={handleChange("dataConclusao")} />
             </div>
           </div>
@@ -204,7 +213,7 @@ export function EbdCertificateBuilder({ igrejaNome, logoPath, logoUrl }: Builder
 
           <div className="space-y-2">
             <Label htmlFor="cidade">Cidade</Label>
-            <Input id="cidade" value={campos.cidade} onChange={handleChange("cidade")} placeholder="Sao Paulo - SP" />
+            <Input id="cidade" value={campos.cidade} onChange={handleChange("cidade")} placeholder="São Paulo - SP" />
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
@@ -219,7 +228,7 @@ export function EbdCertificateBuilder({ igrejaNome, logoPath, logoUrl }: Builder
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="versiculo">Versiculo</Label>
+            <Label htmlFor="versiculo">Versículo</Label>
             <Textarea id="versiculo" value={campos.versiculo} onChange={handleChange("versiculo")} rows={3} />
           </div>
         </div>

@@ -10,7 +10,7 @@ import { CertificateForm } from "./CertificateForm";
 import { CertificatePreview } from "@/components/certificates/CertificatePreview";
 
 const DEFAULT_LOGO = "/igreja.png";
-const DEFAULT_VERSE = "\"Portanto ide, fazei discipulos de todas as nacoes, batizando-os em nome do Pai, e do Filho, e do Espirito Santo.\" Mateus 28:19";
+const DEFAULT_VERSE = "\"Portanto ide, fazei discípulos de todas as nações, batizando-os em nome do Pai, e do Filho, e do Espírito Santo.\" Mateus 28:19";
 const SIGNATURE_LINE = "________________________";
 
 type BuilderProps = {
@@ -53,7 +53,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
             <h2 className="text-4xl font-serif text-primary">Certificado de Batismo</h2>
             <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.5em] text-primary/60">
               <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
-              <span>Batismo cristao</span>
+              <span>Batismo cristão</span>
               <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
             </div>
           </div>
@@ -62,7 +62,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
       {/* Certificate text */}
       <div className="mt-10 flex flex-col gap-8 text-left lg:flex-row lg:gap-12">
         <aside className="rounded-3xl bg-lime-100 p-6 lg:w-64">
-          <p className="text-xs uppercase tracking-[0.4em] text-primary/60">Versiculo</p>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary/60">Versículo</p>
           <div className="mt-3 h-px w-12 bg-primary/40" />
           <blockquote className="mt-4 text-base leading-relaxed text-primary/80">
             {campos.versiculo || DEFAULT_VERSE}
@@ -72,7 +72,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
           <p>
             Certificamos que{" "}
             <span className="font-semibold text-foreground">{campos.nomeBatizando || "__________________"}</span>{" "}
-            foi batizado(a) em nome do Pai, do Filho e do Espirito Santo, conforme o exemplo do nosso Senhor e Salvador Jesus Cristo.
+            foi batizado(a) em nome do Pai, do Filho e do Espírito Santo, conforme o exemplo do nosso Senhor e Salvador Jesus Cristo.
           </p>
           <p>
             Realizado em{" "}
@@ -82,7 +82,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
             <span className="font-semibold text-foreground">{dataFormatada}</span>.
           </p>
           <p>
-            Registrado na Igreja <span className="font-semibold text-foreground">{igrejaNome}</span> com alegria e gratidao.
+            Registrado na Igreja <span className="font-semibold text-foreground">{igrejaNome}</span> com alegria e gratidão.
           </p>
         </div>
       </div>
@@ -90,9 +90,9 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
       {/* Signatures */}
       <div className="-mt-10 grid gap-0 pt-10 text-right text-[11px] uppercase tracking-[0.4em] text-muted-foreground/80 md:grid-cols-2">
         <div className="space-y-1">
-          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.nomeSecretario || "Nome do Secretario(a)"}</p>
+          <p className="text-sm font-semibold tracking-normal text-foreground">{campos.nomeSecretario || "Nome do Secretário(a)"}</p>
           <p className="font-mono text-base tracking-[0.3em] text-foreground/70">{SIGNATURE_LINE}</p>
-          <p>Secretario(a)</p>
+          <p>Secretário(a)</p>
         </div>
         <div className="space-y-1">
           <p className="text-sm font-semibold tracking-normal text-foreground">{campos.nomePastor || "Nome do Pastor"}</p>
@@ -150,12 +150,12 @@ export function IgrejaCertificateBuilder({
       <div className="space-y-6 rounded-3xl border border-border bg-background/70 p-6 shadow-sm print:hidden">
         <div className="space-y-1">
           <h3 className="text-lg font-semibold text-foreground">Dados do certificado</h3>
-          <p className="text-sm text-muted-foreground">Preencha o formulario e visualize o certificado abaixo.</p>
+          <p className="text-sm text-muted-foreground">Preencha o formulário e visualize o certificado abaixo.</p>
         </div>
         <div className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="nomeBatizando">Nome do batizando</Label>
-            <Input id="nomeBatizando" value={campos.nomeBatizando} onChange={handleChange("nomeBatizando")} placeholder="Ex.: Joao da Silva" />
+            <Input id="nomeBatizando" value={campos.nomeBatizando} onChange={handleChange("nomeBatizando")} placeholder="Ex.: João da Silva" />
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
@@ -164,7 +164,7 @@ export function IgrejaCertificateBuilder({
             </div>
             <div className="space-y-2">
               <Label htmlFor="localBatismo">Local</Label>
-              <Input id="localBatismo" value={campos.localBatismo} onChange={handleChange("localBatismo")} placeholder="Ex.: Rio Jordao" />
+              <Input id="localBatismo" value={campos.localBatismo} onChange={handleChange("localBatismo")} placeholder="Ex.: Rio Jordão" />
             </div>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -179,11 +179,11 @@ export function IgrejaCertificateBuilder({
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="space-y-2">
-              <Label htmlFor="nomePastor">Pastor responsavel</Label>
+              <Label htmlFor="nomePastor">Pastor responsável</Label>
               <Input id="nomePastor" value={campos.nomePastor} onChange={handleChange("nomePastor")} />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="nomeSecretario">Secretario(a)</Label>
+              <Label htmlFor="nomeSecretario">Secretário(a)</Label>
               <Input id="nomeSecretario" value={campos.nomeSecretario} onChange={handleChange("nomeSecretario")} />
             </div>
           </div>
@@ -201,7 +201,7 @@ export function IgrejaCertificateBuilder({
       </div>
 
       {/* Certificate preview */}
-      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_batismo.png" mobileAlt="Previa do certificado de batismo">
+      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_batismo.png" mobileAlt="Prévia do certificado de batismo">
         <CertificateInner logoSrc={logoSrc} igrejaNome={igrejaNome} campos={campos} dataFormatada={dataFormatada} />
       </CertificatePreview>
     </section>

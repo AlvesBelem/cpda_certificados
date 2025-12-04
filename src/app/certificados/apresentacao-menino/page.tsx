@@ -24,9 +24,9 @@ export default function CertificadoApresentacaoMeninoPage() {
     <main className="mx-auto w-full max-w-6xl space-y-6 px-6 py-12 md:px-10 lg:px-16">
       <header className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.3em] text-primary/70">Certificados</p>
-        <h1 className="text-2xl font-semibold text-foreground">Apresentacao de Criancas (Menino)</h1>
+        <h1 className="text-2xl font-semibold text-foreground">Apresentação de Crianças (Menino)</h1>
         <p className="text-sm text-muted-foreground">
-          Preencha os dados da apresentacao e clique em imprimir para gerar o certificado. O visual original foi mantido.
+          Preencha os dados da apresentação e clique em imprimir para gerar o certificado. O visual original foi mantido.
         </p>
         <Button asChild variant="outline" className="w-full sm:w-auto">
           <Link href="/certificados">Voltar para os certificados</Link>
@@ -41,7 +41,7 @@ export default function CertificadoApresentacaoMeninoPage() {
         <CardContent className="space-y-4">
           <div className="space-y-1">
             <p className="text-sm font-semibold text-foreground">Identidade visual do certificado</p>
-            <p className="text-xs text-muted-foreground">Escolha como a logo vai aparecer no cabecalho.</p>
+            <p className="text-xs text-muted-foreground">Escolha como a logo vai aparecer no cabeçalho.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             <div className="space-y-2">
@@ -65,7 +65,7 @@ export default function CertificadoApresentacaoMeninoPage() {
             <div className="space-y-2">
               <Label htmlFor="logoUpload">Upload da logo</Label>
               <Input id="logoUpload" type="file" accept="image/*" onChange={handleLogoUpload} />
-              <p className="text-xs text-muted-foreground">PNG/JPG. Se nao enviar, usamos a logo padrao (igreja.png).</p>
+              <p className="text-xs text-muted-foreground">PNG/JPG. Se não enviar, usamos a logo padrão (igreja.png).</p>
             </div>
           </div>
         </CardContent>
@@ -73,7 +73,7 @@ export default function CertificadoApresentacaoMeninoPage() {
 
       <Card className="border-border/60 bg-card/80">
         <CardHeader>
-          <CardTitle>Informacoes do certificado</CardTitle>
+          <CardTitle>Informações do certificado</CardTitle>
           <CardDescription>Preencha os campos abaixo para gerar o certificado.</CardDescription>
         </CardHeader>
         <CardContent>
