@@ -1,12 +1,15 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCertificatePDF } from "@/hooks/use-certificate-pdf";
 import { CertificatePreview } from "@/components/certificates/CertificatePreview";
 import { CertificateForm } from "./CertificateForm";
+
+const DEFAULT_LOGO = "/igreja.png";
 
 const DEFAULT_VERSE =
   "\"Trazei todos os Dízimos à casa do Tesouro, e provai-me nisto, diz o Senhor dos Exércitos, se eu não abrir as janelas do céu, e não derramar sobre vós bênção sem medida.\" Malaquias 3:10,11";
@@ -40,10 +43,17 @@ function CertificateInner({ igrejaNome, campos, dataFormatada }: CertificateInne
 
   return (
     <div className="flex h-full flex-col rounded-[32px] bg-white p-6 text-[#6b4b1f] md:p-5">
-      <div className="space-y-1 text-center md:text-left">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-primary/70">Certificado</p>
-        <h2 className="text-3xl font-serif text-primary md:text-4xl">Dizimista Fiel</h2>
-        <p className="text-xs uppercase tracking-[0.4em] text-primary/60">{igrejaNome}</p>
+      <div className="space-y-3 text-center md:text-left">
+        <div className="flex justify-center md:justify-start">
+          <div className="relative h-16 w-16 overflow-hidden rounded-2xl border-2 border-primary/20 bg-background shadow-md">
+            <Image src={DEFAULT_LOGO} alt="Logo da igreja" fill sizes="64px" className="object-cover" priority />
+          </div>
+        </div>
+        <div className="space-y-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-primary/70">Certificado</p>
+          <h2 className="text-3xl font-serif text-primary md:text-4xl">Dizimista Fiel</h2>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary/60">{igrejaNome}</p>
+        </div>
       </div>
 
       <div className="mt-6 space-y-3 text-sm leading-relaxed text-muted-foreground">

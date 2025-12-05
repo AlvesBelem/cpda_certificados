@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useCertificatePDF } from "@/hooks/use-certificate-pdf";
 import { CertificatePreview } from "@/components/certificates/CertificatePreview";
 import { CertificateForm } from "./CertificateForm";
+import Image from "next/image";
+
+const DEFAULT_LOGO = "/igreja.png";
 
 const DEFAULT_VERSE =
   "\"E sobre tudo isto, revesti-vos de amor, que é o vínculo da perfeição.\" Colossenses 3:14";
@@ -57,10 +59,17 @@ function CertificateInner({ igrejaNome, campos, dataConclusaoFormatada }: Certif
           priority
         />
       </div>
-      <div className="space-y-1 text-center md:text-left">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-primary/70">Certificado</p>
-        <h2 className="text-3xl font-serif text-primary md:text-4xl">Encontro de Casais</h2>
-        <p className="text-xs uppercase tracking-[0.4em] text-primary/60">{igrejaNome}</p>
+      <div className="space-y-3 text-center md:text-left">
+        <div className="flex justify-center md:justify-start">
+          <div className="relative h-16 w-16 overflow-hidden rounded-2xl border-2 border-primary/20 bg-background shadow-md">
+            <Image src={DEFAULT_LOGO} alt="Logo da igreja" fill sizes="64px" className="object-cover" priority />
+          </div>
+        </div>
+        <div className="space-y-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-primary/70">Certificado</p>
+          <h2 className="text-3xl font-serif text-primary md:text-4xl">Encontro de Casais</h2>
+          <p className="text-xs uppercase tracking-[0.4em] text-primary/60">{igrejaNome}</p>
+        </div>
       </div>
 
       <div className="mt-6 space-y-3 text-sm leading-relaxed text-muted-foreground">

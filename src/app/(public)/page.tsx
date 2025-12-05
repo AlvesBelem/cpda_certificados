@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2, Clock, Download, Printer, ShieldCheck, Wand2 } from "lucide-react";
@@ -8,16 +8,16 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const certificatePreviews = [
-  { title: "Batismo", href: "/certificados/batismo", image: "/certificado_batismo.png" },
-  { title: "EBD", href: "/certificados/ebd", image: "/certificado_ebd.png" },
-  { title: "Discipulado", href: "/certificados/discipulado", image: "/certificado_discipulado.png" },
-  { title: "Apresentação Menina", href: "/certificados/apresentacao-menina", image: "/certificado_menina.png" },
-  { title: "Apresentação Menino", href: "/certificados/apresentacao-menino", image: "/certificado_menino.png" },
-  { title: "Casamento", href: "/certificados/casamento", image: "/certificado_casamento.png" },
-  { title: "EBD Anual", href: "/certificados/ebd-anual", image: "/certificado_ebd.png" },
-  { title: "Ordenação Pastoral", href: "/certificados/ordenacao-pastoral", image: "/certificado_discipulado.png" },
-  { title: "Dizimista Fiel", href: "/certificados/dizimista-fiel", image: "/certificado_discipulado.png" },
-  { title: "Participação em Célula", href: "/certificados/participacao-celula", image: "/certificado_discipulado.png" },
+  { title: "Batismo", href: "/certificados/batismo", image: "/certificado_batismo.jpg" },
+  { title: "EBD", href: "/certificados/ebd", image: "/certificado_ebd_trimestre.jpg" },
+  { title: "Discipulado", href: "/certificados/discipulado", image: "/certificado_discipulado.jpg" },
+  { title: "Apresentação Menina", href: "/certificados/apresentacao-menina", image: "/certificado_menina.jpg" },
+  { title: "Apresentação Menino", href: "/certificados/apresentacao-menino", image: "/certificado_menino.jpg" },
+  { title: "Casamento", href: "/certificados/casamento", image: "/certificado_casamento.jpg" },
+  { title: "EBD Anual", href: "/certificados/ebd-anual", image: "/certificado_ebd_anual.jpg" },
+  { title: "Ordenação Pastoral", href: "/certificados/ordenacao-pastoral", image: "/certificado_ordenacao.jpg" },
+  { title: "Dizimista Fiel", href: "/certificados/dizimista-fiel", image: "/certificado_dizimista.jpg" },
+  { title: "Encontro de Casais", href: "/certificados/encontro-casais", image: "/certificado_casais.jpg" },
 ];
 
 const steps = [
@@ -123,19 +123,15 @@ function Hero() {
 }
 
 function TemplateGrid() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
+    const total = certificatePreviews.length;
     const interval = setInterval(() => {
-      if (!el) return;
-      const maxScroll = el.scrollWidth - el.clientWidth;
-      const next = el.scrollLeft + el.clientWidth * 0.8;
-      el.scrollTo({ left: next >= maxScroll ? 0 : next, behavior: "smooth" });
+      setCurrentIndex((prev) => (prev + 1) % total);
     }, 3500);
     return () => clearInterval(interval);
-  }, []);
+  }, [certificatePreviews.length]);
 
   return (
     <section id="modelos" className="space-y-6">
@@ -147,20 +143,30 @@ function TemplateGrid() {
         </p>
       </div>
 
-      <div className="overflow-hidden rounded-3xl border border-border/60 bg-card/50 px-3 py-4 shadow-sm">
-        <div ref={scrollRef} className="flex gap-4 overflow-x-auto scroll-smooth px-1 pb-4 md:px-2">
+      <div className="overflow-hidden rounded-3xl border border-border/60 bg-card/50 px-3 py-6 shadow-sm">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
           {certificatePreviews.map((item) => {
             const imageSrc = item.image || "/certificado_batismo.png";
             return (
               <Link
                 key={item.title}
                 href={item.href}
-                className="group relative flex min-w-[240px] max-w-[280px] snap-start flex-col overflow-hidden rounded-2xl border border-border/70 bg-background shadow-sm transition hover:-translate-y-1 hover:border-primary/60"
+                className="group relative flex min-w-full flex-shrink-0 flex-col items-center gap-4 px-2"
               >
-                <div className="relative h-40 w-full bg-muted">
-                  <Image src={imageSrc} alt={`Prévia do certificado ${item.title}`} fill className="object-cover" sizes="280px" />
+                <div className="relative h-[320px] w-full overflow-hidden rounded-2xl border border-border/70 bg-muted shadow-md">
+                  <Image
+                    src={imageSrc}
+                    alt={`Prévia do certificado ${item.title}`}
+                    fill
+                    className="object-contain"
+                    sizes="(min-width: 1024px) 800px, 100vw"
+                    priority
+                  />
                 </div>
-                <div className="flex items-center justify-between px-4 py-3">
+                <div className="flex w-full items-center justify-between rounded-xl border border-border/60 bg-background/90 px-4 py-3 shadow-sm">
                   <div>
                     <p className="text-sm font-semibold text-foreground">{item.title}</p>
                     <p className="text-xs text-muted-foreground">Pronto para imprimir</p>
