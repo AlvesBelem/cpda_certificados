@@ -12,6 +12,7 @@ export function useCertificatePDF(options: UseCertificatePDFOptions) {
   const certificateRef = useRef<HTMLDivElement>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const isShareSupported = typeof navigator !== "undefined" && typeof navigator.share === "function";
+  const isIOS = typeof navigator !== "undefined" && /iP(hone|od|ad)/i.test(navigator.userAgent || "");
 
   const waitForNextFrame = () => new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
 
@@ -19,48 +20,28 @@ export function useCertificatePDF(options: UseCertificatePDFOptions) {
     if (!certificateRef.current) return null;
 
     const element = certificateRef.current;
-    const hadMobileHidden = element.classList.contains("mobile-hidden");
+    const clone = element.cloneNode(true) as HTMLElement;
+    clone.classList.remove("mobile-hidden");
+    clone.style.position = "absolute";
+    clone.style.left = "-9999px";
+    clone.style.top = "0";
+    clone.style.width = "297mm";
+    clone.style.maxWidth = "297mm";
+    clone.style.height = "210mm";
+    clone.style.maxHeight = "210mm";
+    clone.style.opacity = "1";
+    document.body.appendChild(clone);
 
-    const originalStyles = {
-      width: element.style.width,
-      maxWidth: element.style.maxWidth,
-      height: element.style.height,
-      maxHeight: element.style.maxHeight,
-    };
+    await waitForNextFrame();
 
-    const applyA4Dimensions = () => {
-      element.style.width = "297mm";
-      element.style.maxWidth = "297mm";
-      element.style.height = "210mm";
-      element.style.maxHeight = "210mm";
-    };
+    const canvas = await html2canvas(clone, {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      backgroundColor: "#ffffff",
+    });
 
-    const restoreDimensions = () => {
-      element.style.width = originalStyles.width;
-      element.style.maxWidth = originalStyles.maxWidth;
-      element.style.height = originalStyles.height;
-      element.style.maxHeight = originalStyles.maxHeight;
-    };
-
-    let canvas: HTMLCanvasElement | null = null;
-    try {
-      if (hadMobileHidden) {
-        element.classList.remove("mobile-hidden");
-      }
-
-      applyA4Dimensions();
-      await waitForNextFrame();
-
-      canvas = await html2canvas(element, {
-        scale: 2,
-        useCORS: true,
-        logging: false,
-        backgroundColor: "#ffffff",
-      });
-    } finally {
-      restoreDimensions();
-      if (hadMobileHidden) element.classList.add("mobile-hidden");
-    }
+    clone.remove();
 
     if (!canvas) return null;
 
@@ -90,8 +71,6 @@ export function useCertificatePDF(options: UseCertificatePDFOptions) {
   };
 
   const handleShare = async () => {
-    if (!isShareSupported) return;
-
     setIsGenerating(true);
     try {
       const pdf = await buildPdf();
@@ -99,6 +78,13 @@ export function useCertificatePDF(options: UseCertificatePDFOptions) {
 
       const pdfBlob = pdf.output("blob");
       const file = new File([pdfBlob], options.fileName, { type: "application/pdf" });
+
+      const canShareFiles = typeof navigator !== "undefined" && typeof navigator.canShare === "function" && navigator.canShare({ files: [file] });
+
+      if (!isShareSupported || isIOS || !canShareFiles) {
+        pdf.save(options.fileName);
+        return;
+      }
 
       await navigator.share({
         title: options.title || "Certificado",

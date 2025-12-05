@@ -270,7 +270,11 @@ export function ApresentacaoMeninaCertificateBuilder({ igrejaNome, logoPath, log
         </div>
       </div>
 
-      <CertificatePreview certificateRef={certificateRef} mobileImage="/certificado_menina.png" mobileAlt="Prévia do certificado de apresentação da menina">
+      <CertificatePreview
+        certificateRef={certificateRef}
+        mobileImage="/certificado_menina.png"
+        mobileAlt="Prévia do certificado de apresentação da menina"
+      >
         <CertificateInner
           logoSrc={logoSrc}
           igrejaNome={igrejaNome}

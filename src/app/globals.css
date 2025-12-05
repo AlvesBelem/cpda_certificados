@@ -134,11 +134,41 @@
 
 @media (min-width: 768px) {
   .mobile-hidden {
-    position: static;
-    left: auto;
-    opacity: 1;
-    pointer-events: auto;
-  }
+  position: static;
+  left: auto;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.certificate-content {
+  --certificate-frame-color: currentColor;
+}
+
+.certificate-frame-bands::before,
+.certificate-frame-bands::after {
+  content: "";
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  height: 32px;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 16px 14px, transparent 11px, var(--certificate-frame-color) 11px 13px, transparent 13px),
+    linear-gradient(var(--certificate-frame-color), var(--certificate-frame-color)),
+    linear-gradient(var(--certificate-frame-color), var(--certificate-frame-color));
+  background-repeat: repeat-x, no-repeat, no-repeat;
+  background-size: 32px 26px, 100% 1px, 100% 1px;
+  background-position: 0 center, 0 6px, 0 calc(100% - 6px);
+  opacity: 0.9;
+}
+
+.certificate-frame-bands::before {
+  top: 12px;
+}
+
+.certificate-frame-bands::after {
+  bottom: 12px;
+}
 }
 @page {
   size: A4 landscape;

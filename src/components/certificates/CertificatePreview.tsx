@@ -15,6 +15,8 @@ type CertificatePreviewProps = {
   widthMm?: number;
   heightMm?: number;
   contentClassName?: string;
+  withFrameBands?: boolean;
+  frameColor?: string;
   mobileImage?: string;
   mobileAlt?: string;
   allowOverflow?: boolean;
@@ -33,6 +35,8 @@ export function CertificatePreview({
   widthMm = SCREEN_CERTIFICATE_WIDTH_MM,
   heightMm = SCREEN_CERTIFICATE_HEIGHT_MM,
   contentClassName,
+  withFrameBands = false,
+  frameColor,
   mobileImage,
   mobileAlt = "Previa do certificado",
   allowOverflow = false,
@@ -41,6 +45,8 @@ export function CertificatePreview({
   printHeightMm = PRINT_CERTIFICATE_HEIGHT_MM,
 }: CertificatePreviewProps) {
   const containerClass = cn(baseContainerClass, allowOverflow ? "overflow-visible" : "overflow-hidden");
+  const contentStyle: CSSProperties | undefined = frameColor ? ({ ["--certificate-frame-color" as string]: frameColor } as CSSProperties) : undefined;
+  const contentClass = cn(baseContentClass, contentClassName, withFrameBands && "certificate-frame-bands");
 
   const previewStyle: CSSProperties = { width: "100%", maxWidth: `${widthMm}mm` };
   if (!autoHeight) {
@@ -53,7 +59,7 @@ export function CertificatePreview({
       className={cn(containerClass, "print:hidden mobile-hidden md:static md:opacity-100 md:pointer-events-auto md:w-full")}
       style={previewStyle}
     >
-      <div className={cn(baseContentClass, contentClassName)}>{children}</div>
+      <div className={contentClass} style={contentStyle}>{children}</div>
     </div>
   );
 
@@ -72,7 +78,7 @@ export function CertificatePreview({
         {actualPreview}
       </div>
       <div className={cn(containerClass, "certificate-preview-print hidden print:block")} style={{ width: `${printWidthMm}mm`, height: autoHeight ? "auto" : `${printHeightMm}mm` }}>
-        <div className={cn(baseContentClass, contentClassName)}>{children}</div>
+        <div className={contentClass} style={contentStyle}>{children}</div>
       </div>
     </>
   );
