@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
+import Image from "next/image";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,7 +11,7 @@ import { CertificateForm } from "./CertificateForm";
 
 const DEFAULT_VERSE =
   "\"E sobre tudo isto, revesti-vos de amor, que é o vínculo da perfeição.\" Colossenses 3:14";
-const SIGNATURE_LINE = "_____________________________";
+const SIGNATURE_LINE = "__________________";
 
 type BuilderProps = {
   igrejaNome: string;
@@ -45,7 +46,17 @@ function CertificateInner({ igrejaNome, campos, dataConclusaoFormatada }: Certif
   const versiculoTexto = campos.versiculo || DEFAULT_VERSE;
 
   return (
-    <div className="flex h-full flex-col rounded-[32px] bg-white p-6 text-[#6b4b1f] md:p-5">
+    <div className="relative flex h-full flex-col rounded-[32px] bg-white p-6 text-[#6b4b1f] md:p-5">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <Image
+          src="/alianca.png"
+          alt="Marca d'água de alianças"
+          width={650}
+          height={1024}
+          className="max-h-[90%] max-w-[90%] opacity-30 -translate-y-6"
+          priority
+        />
+      </div>
       <div className="space-y-1 text-center md:text-left">
         <p className="text-[11px] font-semibold uppercase tracking-[0.6em] text-primary/70">Certificado</p>
         <h2 className="text-3xl font-serif text-primary md:text-4xl">Encontro de Casais</h2>
