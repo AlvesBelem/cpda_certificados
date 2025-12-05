@@ -39,7 +39,17 @@ type CertificateInnerProps = {
 
 function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: CertificateInnerProps) {
   return (
-    <div className="flex h-full flex-col text-center md:p-2">
+    <div className="relative flex h-full flex-col overflow-hidden text-center md:p-2">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <Image
+          src="/batismo.png"
+          alt="Marca d'água de batismo"
+          width={650}
+          height={1024}
+          className="max-h-[90%] max-w-[90%] opacity-30 -translate-y-6"
+          priority
+        />
+      </div>
       {/* Church identity */}
       <div className="certificate-header flex flex-col items-start gap-6 text-left md:flex-row md:items-center md:gap-10">
         <div className="flex items-center justify-start">

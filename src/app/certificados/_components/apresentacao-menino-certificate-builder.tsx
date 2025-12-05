@@ -54,7 +54,17 @@ function CertificateInner({
   dataApresentacaoFormatada,
 }: CertificateInnerProps) {
   return (
-    <div className="flex h-full flex-col text-center md:p-2">
+    <div className="relative flex h-full flex-col overflow-hidden text-center md:p-2">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <Image
+          src="/menino.png"
+          alt="Marca d'água de menino"
+          width={600}
+          height={1024}
+          className="max-h-[90%] max-w-[90%] opacity-30 -translate-y-6"
+          priority
+        />
+      </div>
       <div className="certificate-header flex flex-col items-start gap-6 text-left md:flex-row md:items-center md:gap-10">
         <div className="flex items-center justify-start">
           <div className="relative h-24 w-24 overflow-hidden rounded-3xl border-2 border-primary/30 bg-background shadow-lg">
@@ -64,7 +74,7 @@ function CertificateInner({
         <div className="certificate-header__info space-y-2">
           <p className="text-xs font-semibold uppercase tracking-[0.6em] text-primary/70">Igreja</p>
           <p className="text-sm uppercase tracking-[0.4em] text-primary/80">{igrejaNome}</p>
-          <h2 className="text-4xl font-serif text-primary">Certificado de Apresentação</h2>
+          <h2 className="text-4xl font-serif text-primary">Certificado de Apresentação de Criança Menino</h2>
           <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.5em] text-primary/60">
             <span className="h-px w-10 bg-primary/30" aria-hidden="true" />
             <span>Apresentação Infantil</span>
