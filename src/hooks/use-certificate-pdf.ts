@@ -13,31 +13,63 @@ export function useCertificatePDF(options: UseCertificatePDFOptions) {
   const [isGenerating, setIsGenerating] = useState(false);
   const isShareSupported = typeof navigator !== "undefined" && typeof navigator.share === "function";
 
+  const waitForNextFrame = () => new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+
   const buildPdf = async () => {
     if (!certificateRef.current) return null;
 
     const element = certificateRef.current;
     const hadMobileHidden = element.classList.contains("mobile-hidden");
-    if (hadMobileHidden) {
-      element.classList.remove("mobile-hidden");
-      await new Promise((resolve) => requestAnimationFrame(() => resolve(null)));
+
+    const originalStyles = {
+      width: element.style.width,
+      maxWidth: element.style.maxWidth,
+      height: element.style.height,
+      maxHeight: element.style.maxHeight,
+    };
+
+    const applyA4Dimensions = () => {
+      element.style.width = "297mm";
+      element.style.maxWidth = "297mm";
+      element.style.height = "210mm";
+      element.style.maxHeight = "210mm";
+    };
+
+    const restoreDimensions = () => {
+      element.style.width = originalStyles.width;
+      element.style.maxWidth = originalStyles.maxWidth;
+      element.style.height = originalStyles.height;
+      element.style.maxHeight = originalStyles.maxHeight;
+    };
+
+    let canvas: HTMLCanvasElement | null = null;
+    try {
+      if (hadMobileHidden) {
+        element.classList.remove("mobile-hidden");
+      }
+
+      applyA4Dimensions();
+      await waitForNextFrame();
+
+      canvas = await html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        logging: false,
+        backgroundColor: "#ffffff",
+      });
+    } finally {
+      restoreDimensions();
+      if (hadMobileHidden) element.classList.add("mobile-hidden");
     }
 
-    const canvas = await html2canvas(element, {
-      scale: 2,
-      useCORS: true,
-      logging: false,
-      backgroundColor: "#ffffff",
-    });
-
-    if (hadMobileHidden) element.classList.add("mobile-hidden");
+    if (!canvas) return null;
 
     const pdf = new jsPDF("landscape", "mm", "a4");
 
     const pageWidth = pdf.internal.pageSize.getWidth();
     const pageHeight = pdf.internal.pageSize.getHeight();
-    const marginX = pageWidth * 0.05; // 5% margin on each side => ~90% usable width
-    const marginY = pageHeight * 0.05; // 5% margin on each side => ~90% usable height
+    const marginX = 0;
+    const marginY = 0;
     const usableWidth = pageWidth - marginX * 2;
     const usableHeight = pageHeight - marginY * 2;
     const imgWidth = canvas.width;

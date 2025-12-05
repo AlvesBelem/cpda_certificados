@@ -57,7 +57,7 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataConclusaoFormatada 
   const professorTexto = campos.professor || "Professor(a)";
 
   return (
-    <div className="flex h-full flex-col rounded-[32px] border border-primary/20 bg-white p-6 text-[#142443] md:p-5">
+    <div className="flex h-full flex-col rounded-[32px] bg-white p-6 text-[#142443] md:p-5">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-8">
         <div className="flex items-center gap-4 md:flex-1">
           <div className="relative h-20 w-20 overflow-hidden rounded-full border-2 border-primary/30 bg-white shadow-md md:h-24 md:w-24">
