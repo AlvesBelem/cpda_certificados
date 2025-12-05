@@ -14,6 +14,11 @@ const certificadosDisponiveis = [
     descricao: "Modelo inspirado na Escola Bíblica Dominical com trimestre, classe e assinaturas.",
   },
   {
+    slug: "ebd-anual",
+    titulo: "Certificado EBD Anual",
+    descricao: "Registro anual para promoção de turma na Escola Bíblica Dominical.",
+  },
+  {
     slug: "discipulado",
     titulo: "Certificado de Discipulado",
     descricao: "Modelo dourado para cursos e treinamentos de discipulado.",
@@ -32,6 +37,41 @@ const certificadosDisponiveis = [
     slug: "casamento",
     titulo: "Certificado de Casamento",
     descricao: "Modelo floral inspirado no layout tradicional de casamento cristão.",
+  },
+  {
+    slug: "ordenacao-pastoral",
+    titulo: "Certificado de Ordenação Pastoral",
+    descricao: "Registro de ordenação ao ministério pastoral com dados completos.",
+  },
+  {
+    slug: "ordenacao-presbitero",
+    titulo: "Certificado de Ordenação Presbítero",
+    descricao: "Certificado para ordenação ao presbitério, seguindo o padrão dos demais.",
+  },
+  {
+    slug: "ordenacao-diacono",
+    titulo: "Certificado de Ordenação Diácono",
+    descricao: "Certificado para ordenação diaconal, no mesmo formato dos outros modelos.",
+  },
+  {
+    slug: "ordenacao-evangelista",
+    titulo: "Certificado de Ordenação Evangelista",
+    descricao: "Certificado para ordenação ao ministério evangelista, com os campos essenciais.",
+  },
+  {
+    slug: "ordenacao-missionario",
+    titulo: "Certificado de Ordenação Ministério Missionário",
+    descricao: "Certificado para ordenação ao ministério missionário, seguindo o padrão dourado.",
+  },
+  {
+    slug: "dizimista-fiel",
+    titulo: "Certificado de Dizimista Fiel",
+    descricao: "Reconhecimento de fidelidade nos dízimos, com nome, data e versículo.",
+  },
+  {
+    slug: "encontro-casais",
+    titulo: "Certificado de Encontro de Casais",
+    descricao: "Certificado romântico para encontros de casais, com dados do casal e assinaturas.",
   },
 ];
 

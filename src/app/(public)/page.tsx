@@ -1,20 +1,23 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, CheckCircle2, Clock, Download, Printer, ShieldCheck, Wand2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-const templates = [
-  { title: "Batismo", description: "Layout clássico com destaque para nome, data, local e assinaturas.", href: "/certificados/batismo" },
-  { title: "EBD", description: "Modelo da Escola Bíblica Dominical com trimestre, classe e professor.", href: "/certificados/ebd" },
-  { title: "Discipulado", description: "Certificado dourado para cursos, com período e assinatura pastoral.", href: "/certificados/discipulado" },
-  { title: "Apresentação Infantil", description: "Versão para menina e para menino, com campos completos da família.", href: "/certificados/apresentacao-menina" },
-  { title: "Casamento", description: "Arte floral para registrar união, local e celebrantes.", href: "/certificados/casamento" },
+const certificatePreviews = [
+  { title: "Batismo", href: "/certificados/batismo", image: "/certificado_batismo.png" },
+  { title: "EBD", href: "/certificados/ebd", image: "/certificado_ebd.png" },
+  { title: "Discipulado", href: "/certificados/discipulado", image: "/certificado_discipulado.png" },
+  { title: "Apresentação Menina", href: "/certificados/apresentacao-menina", image: "/certificado_menina.png" },
+  { title: "Apresentação Menino", href: "/certificados/apresentacao-menino", image: "/certificado_menino.png" },
+  { title: "Casamento", href: "/certificados/casamento", image: "/certificado_casamento.png" },
+  { title: "EBD Anual", href: "/certificados/ebd-anual", image: "/certificado_ebd.png" },
+  { title: "Ordenação Pastoral", href: "/certificados/ordenacao-pastoral", image: "/certificado_discipulado.png" },
+  { title: "Dizimista Fiel", href: "/certificados/dizimista-fiel", image: "/certificado_discipulado.png" },
+  { title: "Participação em Célula", href: "/certificados/participacao-celula", image: "/certificado_discipulado.png" },
 ];
 
 const steps = [
@@ -77,7 +80,7 @@ function Hero() {
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="h-12 px-8 text-base">
-            <Link href="#modelos">Ver modelos disponiveis</Link>
+            <Link href="#modelos">Ver modelos disponíveis</Link>
           </Button>
         </div>
         <div className="flex flex-wrap gap-6 text-sm text-muted-foreground">
@@ -103,7 +106,7 @@ function Hero() {
         <CardContent className="space-y-4 text-sm text-muted-foreground">
           <div className="flex items-center justify-between rounded-xl border border-primary/15 bg-background/60 px-4 py-3">
             <span>Modelos prontos</span>
-            <span className="text-xl font-semibold text-foreground">6</span>
+            <span className="text-xl font-semibold text-foreground">10+</span>
           </div>
           <div className="flex items-center justify-between rounded-xl border border-primary/15 bg-background/60 px-4 py-3">
             <span>PDF em poucos cliques</span>
@@ -120,6 +123,20 @@ function Hero() {
 }
 
 function TemplateGrid() {
+  const scrollRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const interval = setInterval(() => {
+      if (!el) return;
+      const maxScroll = el.scrollWidth - el.clientWidth;
+      const next = el.scrollLeft + el.clientWidth * 0.8;
+      el.scrollTo({ left: next >= maxScroll ? 0 : next, behavior: "smooth" });
+    }, 3500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section id="modelos" className="space-y-6">
       <div className="space-y-3">
@@ -129,24 +146,31 @@ function TemplateGrid() {
           Os layouts foram mantidos intactos para preservar o padrão. Basta informar os dados e imprimir.
         </p>
       </div>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {templates.map((template) => (
-          <Card key={template.title} className="border-border/60 bg-card/80 transition hover:border-primary">
-            <CardHeader>
-              <CardTitle>{template.title}</CardTitle>
-              <CardDescription>{template.description}</CardDescription>
-            </CardHeader>
-            <CardContent className="flex items-center justify-between">
-              <Button asChild variant="ghost" className="px-0 text-primary hover:text-primary">
-                <Link href={template.href}>
-                  Abrir modelo
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <span className="text-xs text-muted-foreground">Pronto para imprimir</span>
-            </CardContent>
-          </Card>
-        ))}
+
+      <div className="overflow-hidden rounded-3xl border border-border/60 bg-card/50 px-3 py-4 shadow-sm">
+        <div ref={scrollRef} className="flex gap-4 overflow-x-auto scroll-smooth px-1 pb-4 md:px-2">
+          {certificatePreviews.map((item) => {
+            const imageSrc = item.image || "/certificado_batismo.png";
+            return (
+              <Link
+                key={item.title}
+                href={item.href}
+                className="group relative flex min-w-[240px] max-w-[280px] snap-start flex-col overflow-hidden rounded-2xl border border-border/70 bg-background shadow-sm transition hover:-translate-y-1 hover:border-primary/60"
+              >
+                <div className="relative h-40 w-full bg-muted">
+                  <Image src={imageSrc} alt={`Prévia do certificado ${item.title}`} fill className="object-cover" sizes="280px" />
+                </div>
+                <div className="flex items-center justify-between px-4 py-3">
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">{item.title}</p>
+                    <p className="text-xs text-muted-foreground">Pronto para imprimir</p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-primary transition group-hover:translate-x-1" />
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -228,9 +252,9 @@ function FinalCta() {
       <h2 className="mt-3 text-3xl font-bold tracking-tight">
         Acesse os certificados e gere o documento agora mesmo.
       </h2>
-        <p className="mt-2 text-muted-foreground">
-          Nenhum outro módulo, nenhum cadastro. Somente os modelos revisados e prontos para impressão.
-        </p>
+      <p className="mt-2 text-muted-foreground">
+        Nenhum outro módulo, nenhum cadastro. Somente os modelos revisados e prontos para impressão.
+      </p>
       <Button asChild size="lg" className="mt-6">
         <Link href="/certificados">
           Abrir os certificados

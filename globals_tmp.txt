@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -142,30 +142,53 @@
 }
 
 .certificate-content {
-  position: relative;
-  overflow: visible;
+  --certificate-frame-color: currentColor;
 }
 
-.certificate-content::before,
-.certificate-content::after {
+.certificate-frame-bands::before,
+.certificate-frame-bands::after {
   content: "";
   position: absolute;
-  left: 3%;
-  right: 3%;
-  height: 6px;
-  border-radius: 999px;
-  --band-color: var(--certificate-frame-color, rgba(0, 0, 0, 0.35));
-  background: linear-gradient(90deg, transparent 0%, var(--band-color) 15%, var(--band-color) 85%, transparent 100%);
+  left: 4%;
+  right: 4%;
+  height: 28px;
   pointer-events: none;
-  opacity: 0.95;
+  --frame: var(--certificate-frame-color);
+  --frame-soft: rgba(255, 255, 255, 0.55);
+  background:
+    radial-gradient(circle at 18px 50%, var(--frame) 0 6px, transparent 7px) 0 0 / 46px 32px
+      repeat-x,
+    radial-gradient(circle at 36px 50%, var(--frame) 0 4px, transparent 5px) 0 0 / 46px 32px
+      repeat-x,
+    linear-gradient(
+        to right,
+        transparent 0%,
+        var(--frame-soft) 8%,
+        var(--frame) 14%,
+        var(--frame) 86%,
+        var(--frame-soft) 92%,
+        transparent 100%
+      )
+      0 10px / 100% 2px no-repeat,
+    linear-gradient(
+        to right,
+        transparent 0%,
+        var(--frame-soft) 8%,
+        var(--frame) 14%,
+        var(--frame) 86%,
+        var(--frame-soft) 92%,
+        transparent 100%
+      )
+      0 calc(100% - 10px) / 100% 2px no-repeat;
+  opacity: 0.8;
 }
 
-.certificate-content::before {
-  top: 6mm;
+.certificate-frame-bands::before {
+  top: 12px;
 }
 
-.certificate-content::after {
-  bottom: 30mm;
+.certificate-frame-bands::after {
+  bottom: 12px;
 }
 
 @page {
@@ -191,7 +214,7 @@
     position: absolute;
     inset: 0;
     display: flex !important;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     background: white;
     padding-top: 0;
@@ -215,21 +238,12 @@
     width: 297mm;
     height: 210mm;
     margin-top: 0 !important;
+    transform: none;
   }
 
   .certificate-content {
-    margin-top: 30mm !important;
-    margin-bottom: 0 !important;
-    display: block;
+    margin-top: 50mm !important;
     page-break-inside: avoid;
-  }
-
-  .certificate-content::before {
-    top: -4mm;
-  }
-
-  .certificate-content::after {
-    bottom: 30mm;
   }
 
   .certificate-header {

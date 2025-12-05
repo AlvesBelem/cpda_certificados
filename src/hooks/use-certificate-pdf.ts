@@ -30,6 +30,19 @@ export function useCertificatePDF(options: UseCertificatePDFOptions) {
     clone.style.height = "210mm";
     clone.style.maxHeight = "210mm";
     clone.style.opacity = "1";
+    clone.style.paddingTop = "0";
+    clone.style.paddingBottom = "0";
+    clone.style.transform = "none";
+    clone.style.marginTop = "0";
+    clone.style.marginBottom = "0";
+    clone.style.display = "flex";
+    clone.style.alignItems = "center";
+    clone.style.justifyContent = "center";
+    clone.querySelectorAll<HTMLElement>(".certificate-content").forEach((node) => {
+      node.style.display = "block";
+      node.style.marginTop = "30mm";
+      node.style.marginBottom = "0";
+    });
     document.body.appendChild(clone);
 
     await waitForNextFrame();

@@ -234,6 +234,7 @@ export function CasamentoCertificateBuilder({ igrejaNome, logoPath, logoUrl }: B
         mobileAlt="Prévia do certificado de casamento"
         allowOverflow
         autoHeight
+        frameColor="#fee2e2"
         contentClassName="pb-12 md:pb-16"
       >
         <CertificateInner logoSrc={logoSrc} igrejaNome={igrejaNome} campos={campos} dataFormatada={dataFormatada} />

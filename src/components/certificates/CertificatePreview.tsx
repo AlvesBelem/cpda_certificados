@@ -27,7 +27,7 @@ type CertificatePreviewProps = {
 
 const baseContainerClass = "certificate-preview relative rounded-[24px] bg-transparent";
 const baseContentClass =
-  "certificate-content relative flex h-full flex-col overflow-hidden rounded-[32px] bg-white p-6 text-center md:p-10 print:mx-auto print:my-auto print:h-[92%] print:w-[96%] print:max-w-none print:rounded-3xl print:p-12";
+  "certificate-content relative flex h-full flex-col overflow-hidden rounded-[32px] bg-white p-6 text-center md:p-10 print:mx-auto print:my-auto print:h-auto print:w-[94%] print:max-w-[285mm] print:rounded-3xl print:p-12";
 
 export function CertificatePreview({
   certificateRef,
@@ -77,7 +77,10 @@ export function CertificatePreview({
         {mobilePlaceholder}
         {actualPreview}
       </div>
-      <div className={cn(containerClass, "certificate-preview-print hidden print:block")} style={{ width: `${printWidthMm}mm`, height: autoHeight ? "auto" : `${printHeightMm}mm` }}>
+      <div
+        className={cn(containerClass, "certificate-preview-print hidden print:block")}
+        style={{ width: `${printWidthMm}mm`, height: autoHeight ? "auto" : `${printHeightMm}mm` }}
+      >
         <div className={contentClass} style={contentStyle}>{children}</div>
       </div>
     </>

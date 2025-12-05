@@ -274,6 +274,7 @@ export function ApresentacaoMeninaCertificateBuilder({ igrejaNome, logoPath, log
         certificateRef={certificateRef}
         mobileImage="/certificado_menina.png"
         mobileAlt="Prévia do certificado de apresentação da menina"
+        frameColor="#fce7f3"
       >
         <CertificateInner
           logoSrc={logoSrc}

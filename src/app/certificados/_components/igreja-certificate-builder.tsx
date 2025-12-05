@@ -205,6 +205,7 @@ export function IgrejaCertificateBuilder({
         certificateRef={certificateRef}
         mobileImage="/certificado_batismo.png"
         mobileAlt="Prévia do certificado de batismo"
+        frameColor="#ecfccb"
       >
         <CertificateInner logoSrc={logoSrc} igrejaNome={igrejaNome} campos={campos} dataFormatada={dataFormatada} />
       </CertificatePreview>

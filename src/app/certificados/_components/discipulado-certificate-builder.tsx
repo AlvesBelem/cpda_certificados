@@ -234,6 +234,7 @@ export function DiscipuladoCertificateBuilder({ igrejaNome, logoPath, logoUrl }:
         certificateRef={certificateRef}
         mobileImage="/certificado_discipulado.png"
         mobileAlt="Prévia do certificado de discipulado"
+        frameColor="#f3e7d8"
       >
         <CertificateInner
           logoSrc={logoSrc}
