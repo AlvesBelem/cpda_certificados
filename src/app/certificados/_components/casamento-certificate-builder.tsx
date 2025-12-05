@@ -47,6 +47,16 @@ function CertificateInner({ logoSrc, igrejaNome, campos, dataFormatada }: Certif
         <div className="pointer-events-none absolute inset-0 opacity-15">
           <Image src="/fundo_casamento.svg" alt="" fill className="object-cover" priority />
         </div>
+        <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+          <Image
+            src="/alianca.png"
+            alt="Marca d'água de alianças"
+            width={650}
+            height={1024}
+            className="max-h-[90%] max-w-[90%] opacity-30"
+            priority
+          />
+        </div>
         <div className="relative flex h-full flex-col">
           <div className="certificate-header flex flex-col items-start gap-6 text-left md:flex-row md:items-center md:gap-10">
             <div className="flex items-center justify-start">
